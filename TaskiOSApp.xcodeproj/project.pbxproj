@@ -15,6 +15,7 @@
 		9C02B5FA1F900EB900A7EDA7 /* TaskiOSAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C02B5F91F900EB900A7EDA7 /* TaskiOSAppTests.swift */; };
 		9C02B6051F900EB900A7EDA7 /* TaskiOSAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C02B6041F900EB900A7EDA7 /* TaskiOSAppUITests.swift */; };
 		9C94C9811F91C33900E16166 /* TaskListDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C94C9801F91C33900E16166 /* TaskListDetailViewController.swift */; };
+		9C94C9831F91CBCD00E16166 /* NewTaskListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C94C9821F91CBCD00E16166 /* NewTaskListViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +50,7 @@
 		9C02B6041F900EB900A7EDA7 /* TaskiOSAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskiOSAppUITests.swift; sourceTree = "<group>"; };
 		9C02B6061F900EB900A7EDA7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9C94C9801F91C33900E16166 /* TaskListDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskListDetailViewController.swift; sourceTree = "<group>"; };
+		9C94C9821F91CBCD00E16166 /* NewTaskListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewTaskListViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,11 +103,12 @@
 			children = (
 				9C02B5E41F900EB900A7EDA7 /* AppDelegate.swift */,
 				9C02B5E61F900EB900A7EDA7 /* TaskListsViewController.swift */,
+				9C94C9821F91CBCD00E16166 /* NewTaskListViewController.swift */,
+				9C94C9801F91C33900E16166 /* TaskListDetailViewController.swift */,
 				9C02B5E81F900EB900A7EDA7 /* Main.storyboard */,
 				9C02B5EB1F900EB900A7EDA7 /* Assets.xcassets */,
 				9C02B5ED1F900EB900A7EDA7 /* LaunchScreen.storyboard */,
 				9C02B5F01F900EB900A7EDA7 /* Info.plist */,
-				9C94C9801F91C33900E16166 /* TaskListDetailViewController.swift */,
 			);
 			path = TaskiOSApp;
 			sourceTree = "<group>";
@@ -264,6 +267,7 @@
 			files = (
 				9C94C9811F91C33900E16166 /* TaskListDetailViewController.swift in Sources */,
 				9C02B5E71F900EB900A7EDA7 /* TaskListsViewController.swift in Sources */,
+				9C94C9831F91CBCD00E16166 /* NewTaskListViewController.swift in Sources */,
 				9C02B5E51F900EB900A7EDA7 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

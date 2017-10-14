@@ -31,8 +31,10 @@ class TaskListsViewController: UIViewController, UITableViewDelegate, UITableVie
     
     // This function is called before the segue
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let taskListDetailViewController = segue.destination as! TaskListDetailViewController
-        taskListDetailViewController.taskListId = 666
+        if segue.identifier == "taskListDetailSegue" {
+            let taskListDetailViewController = segue.destination as! TaskListDetailViewController
+            taskListDetailViewController.taskListId = 666
+        }
     }
     
     override func viewDidLoad() {
