@@ -17,7 +17,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = UITableViewCell(style: UITableViewCellStyle.default, reuseIdentifier: "TaskListCell")
+        let cell = UITableViewCell(style: UITableViewCellStyle.default, reuseIdentifier: "taskListCell")
         cell.textLabel?.text = taskListNames[indexPath.row]
         cell.accessoryType = UITableViewCellAccessoryType.disclosureIndicator
         return(cell)
@@ -27,7 +27,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         // Segue to the second view controller
-        self.performSegue(withIdentifier: "taskListSegue", sender: self)
+        self.performSegue(withIdentifier: "taskListDetailSegue", sender: self)
     }
     
     // This function is called before the segue
