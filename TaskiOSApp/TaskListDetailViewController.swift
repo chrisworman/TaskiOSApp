@@ -12,6 +12,8 @@ class TaskListDetailViewController: UIViewController, UITableViewDelegate, UITab
     
     let taskListNames = ["Task 1", "Task 2"]
     
+    var taskListId: Int = 0
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return(taskListNames.count)
     }
@@ -26,6 +28,7 @@ class TaskListDetailViewController: UIViewController, UITableViewDelegate, UITab
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        self.title = String(format: "List id #%d", taskListId)
     }
     
     override func didReceiveMemoryWarning() {

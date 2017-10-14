@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class TaskListsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     let taskListNames = ["List 1", "List 2"]
     
@@ -25,19 +25,14 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     // method to run when table view cell is tapped
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
         // Segue to the second view controller
         self.performSegue(withIdentifier: "taskListDetailSegue", sender: self)
     }
     
     // This function is called before the segue
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        
-        // get a reference to the second view controller
-        //let secondViewController = segue.destination as! SecondViewController
-        
-        // set a variable in the second view controller with the data to pass
-        //secondViewController.receivedData = "hello"
+        let taskListDetailViewController = segue.destination as! TaskListDetailViewController
+        taskListDetailViewController.taskListId = 666
     }
     
     override func viewDidLoad() {
