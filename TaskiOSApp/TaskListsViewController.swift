@@ -10,6 +10,8 @@ import UIKit
 
 class TaskListsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
+    @IBOutlet weak var newTaskListButton: UIBarButtonItem!
+    
     let taskListNames = ["List 1", "List 2"]
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -35,6 +37,29 @@ class TaskListsViewController: UIViewController, UITableViewDelegate, UITableVie
             let taskListDetailViewController = segue.destination as! TaskListDetailViewController
             taskListDetailViewController.taskListId = 666
         }
+    }
+    
+    @IBAction func showNewTaskListAlert(_ sender: UIBarButtonItem) {
+        let alertController = UIAlertController(title: "New Task List", message: "", preferredStyle: .alert)
+        
+        // the confirm action gets the name of the new list (TODO and creates the list)
+        let confirmAction = UIAlertAction(title: "Create List", style: .default) { (_) in
+            //let taskListName = alertController.textFields?[0].text
+        }
+        
+        // the cancel action does nothing
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { (_) in }
+        
+        // add the text field to the alert
+        alertController.addTextField { (textField) in
+            textField.placeholder = "Enter a name for the list"
+        }
+        
+        //adding the action to dialogbox
+        alertController.addAction(confirmAction)
+        alertController.addAction(cancelAction)
+        
+        self.present(alertController, animated: true, completion: nil)
     }
     
     override func viewDidLoad() {
