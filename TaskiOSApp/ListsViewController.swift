@@ -8,7 +8,7 @@
 
 import UIKit
 
-class TaskListsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class ListsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     @IBOutlet weak var newTaskListButton: UIBarButtonItem!
     
@@ -34,7 +34,7 @@ class TaskListsViewController: UIViewController, UITableViewDelegate, UITableVie
     // This function is called before the segue
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "taskListDetailSegue" {
-            let taskListDetailViewController = segue.destination as! TaskListDetailViewController
+            let taskListDetailViewController = segue.destination as! TasksViewController
             taskListDetailViewController.taskListId = 666
         }
     }

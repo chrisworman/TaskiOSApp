@@ -8,7 +8,7 @@
 
 import UIKit
 
-class TaskListDetailViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class TasksViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     @IBOutlet weak var newTaskButton: UIBarButtonItem!
     
