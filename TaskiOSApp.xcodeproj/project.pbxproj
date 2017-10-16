@@ -99,9 +99,8 @@
 		9C02B5E31F900EB900A7EDA7 /* TaskiOSApp */ = {
 			isa = PBXGroup;
 			children = (
+				9C321E7A1F95265600BC5D13 /* Controller */,
 				9C02B5E41F900EB900A7EDA7 /* AppDelegate.swift */,
-				9C02B5E61F900EB900A7EDA7 /* ListsViewController.swift */,
-				9C94C9801F91C33900E16166 /* TasksViewController.swift */,
 				9C02B5E81F900EB900A7EDA7 /* Main.storyboard */,
 				9C02B5EB1F900EB900A7EDA7 /* Assets.xcassets */,
 				9C02B5ED1F900EB900A7EDA7 /* LaunchScreen.storyboard */,
@@ -126,6 +125,15 @@
 				9C02B6061F900EB900A7EDA7 /* Info.plist */,
 			);
 			path = TaskiOSAppUITests;
+			sourceTree = "<group>";
+		};
+		9C321E7A1F95265600BC5D13 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				9C94C9801F91C33900E16166 /* TasksViewController.swift */,
+				9C02B5E61F900EB900A7EDA7 /* ListsViewController.swift */,
+			);
+			path = Controller;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
