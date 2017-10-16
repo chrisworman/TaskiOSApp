@@ -63,7 +63,7 @@
             </objects>
             <point key="canvasLocation" x="449" y="134"/>
         </scene>
-        <!--Task List Detail View Controller-->
+        <!--Title-->
         <scene sceneID="XUQ-ki-f5J">
             <objects>
                 <viewController id="Lw1-tZ-WSh" customClass="TaskListDetailViewController" customModule="TaskiOSApp" customModuleProvider="target" sceneMemberID="viewController">
@@ -99,6 +99,16 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="yQX-i7-Xty"/>
                     </view>
+                    <navigationItem key="navigationItem" title="Title" id="3z9-us-uKt">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="Hwy-MO-byI">
+                            <connections>
+                                <action selector="showNewTaskAlert:" destination="Lw1-tZ-WSh" id="Rmw-gO-yIE"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="newTaskButton" destination="Hwy-MO-byI" id="Fez-ky-wgN"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ggJ-go-FyY" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
