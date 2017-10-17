@@ -14,16 +14,18 @@ class TaskApi {
     
     private let restApi: RestApi
     
-    init() {
+    private init() {
         restApi = RestApi(baseURL: "http://172.16.1.70:5000")
     }
     
+    // Get the shared instance of the TaskApi  (i.e. Singleton)
     class func shared() -> TaskApi {
         return sharedTaskApi
     }
     
-    public func get(listId: Int, completion: @escaping(_ result: [Task]) -> Void) throws {
-        try restApi.get(urlPathAndQuery: String(format:"/tasks?list_id=%d", listId), completion: completion)
+    // Get the tasks that are on a list
+    public func getByListId(listId: Int, completion: @escaping(_ result: [Task]) -> Void) throws {
+        try restApi.get(pathAndQuery: String(format:"/tasks?list_id=%d", listId), completion: completion)
     }
     
 }

@@ -55,7 +55,7 @@ class TasksViewController: UIViewController, UITableViewDelegate, UITableViewDat
         super.viewWillAppear(animated)
         
         do {
-            try TaskApi.shared().get(listId: taskListId, completion: {(result: [Task]) in
+            try TaskApi.shared().getByListId(listId: taskListId, completion: {(result: [Task]) in
                 self.tasks = result
                 DispatchQueue.main.async() {
                     self.tasksTableView?.reloadData()

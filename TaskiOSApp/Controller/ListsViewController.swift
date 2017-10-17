@@ -45,10 +45,16 @@ class ListsViewController: UIViewController, UITableViewDelegate, UITableViewDat
     
     @IBAction func showNewTaskListAlert(_ sender: UIBarButtonItem) {
         let alertController = UIAlertController(title: "New Task List", message: "", preferredStyle: .alert)
-        
         let confirmAction = UIAlertAction(title: "Create List", style: .default) { (_) in
-            //let taskListName = alertController.textFields?[0].text
-            // TODO: create and save a new list
+            let newListName = alertController.textFields?[0].text
+            let newList = List(id: 0, name: newListName!, date_created: "", date_modified: "")
+            do {
+                try ListApi.shared().create(newList: newList, completion: {(newList: List) in
+                    self.reloadLists()
+                })
+            } catch {
+                print("Error info: \(error)")
+            }
         }
         
         // the cancel action does nothing
@@ -68,9 +74,12 @@ class ListsViewController: UIViewController, UITableViewDelegate, UITableViewDat
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-
+        reloadLists()
+    }
+    
+    private func reloadLists() {
         do {
-            try ListApi.shared().get(completion: {(result: [List]) in
+            try ListApi.shared().getAll(completion: {(result: [List]) in
                 self.lists = result
                 DispatchQueue.main.async() {
                     self.listsTableView?.reloadData()
