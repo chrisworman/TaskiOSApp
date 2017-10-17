@@ -28,4 +28,8 @@ class TaskApi {
         try restApi.get(pathAndQuery: String(format:"/tasks?list_id=%d", listId), completion: completion)
     }
     
+    // Create a new task
+    public func create(newTask: Task, completion: @escaping(_ result: Task) -> Void) throws {
+        try restApi.post(pathAndQuery: "/tasks", body: newTask, completion: completion)
+    }
 }

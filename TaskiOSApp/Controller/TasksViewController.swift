@@ -14,12 +14,14 @@ class TasksViewController: UIViewController, UITableViewDelegate, UITableViewDat
     @IBOutlet weak var tasksTableView: UITableView!
     
     var tasks: [Task] = []
-    var taskListId: Int = 0
+    var list: List = List(id: 0, name: "", date_created: "", date_modified: "")
     
+    // Returns how many Tasks are available when the table view wants to know
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return(tasks.count)
     }
     
+    // Returns the table view cell for the "Task" at the specified index path
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = UITableViewCell(style: UITableViewCellStyle.default, reuseIdentifier: "taskCell")
         cell.textLabel?.text = tasks[indexPath.row].text
@@ -27,6 +29,7 @@ class TasksViewController: UIViewController, UITableViewDelegate, UITableViewDat
         return(cell)
     }
     
+    // Show the "new task" alert in response to a button press in the UI
     @IBAction func showNewTaskAlert(_ sender: Any) {
         let alertController = UIAlertController(title: "New Task", message: "", preferredStyle: .alert)
         
@@ -51,11 +54,10 @@ class TasksViewController: UIViewController, UITableViewDelegate, UITableViewDat
         self.present(alertController, animated: true, completion: nil)
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        
+    // Reload the tasks from the api and update the UI
+    private func reloadTasks() {
         do {
-            try TaskApi.shared().getByListId(listId: taskListId, completion: {(result: [Task]) in
+            try TaskApi.shared().getByListId(listId: list.id, completion: {(result: [Task]) in
                 self.tasks = result
                 DispatchQueue.main.async() {
                     self.tasksTableView?.reloadData()
@@ -66,15 +68,18 @@ class TasksViewController: UIViewController, UITableViewDelegate, UITableViewDat
         }
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.title = list.name
+        reloadTasks()
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
-        self.title = String(format: "List id #%d", taskListId)
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
     
