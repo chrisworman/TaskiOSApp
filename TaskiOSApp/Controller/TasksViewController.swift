@@ -32,8 +32,11 @@ class TasksViewController: UIViewController, UITableViewDelegate, UITableViewDat
     // Show the "new task" alert in response to a button press in the UI
     @IBAction func showNewTaskAlert(_ sender: Any) {
         let alertController = UIAlertController(title: "New Task", message: "", preferredStyle: .alert)
+        alertController.addTextField { (textField) in
+            textField.placeholder = ""
+        }
         
-        // the confirm action gets the task text
+        // When the user confirms, get the text and create a new task via the api
         let confirmAction = UIAlertAction(title: "Add Task", style: .default) { (_) in
             let text = alertController.textFields?[0].text
             let newTask = Task(id: 0, list_id: self.list.id, text: text!, date_created: "", date_modified: "")
@@ -46,15 +49,9 @@ class TasksViewController: UIViewController, UITableViewDelegate, UITableViewDat
             }
         }
         
-        // the cancel action does nothing
+        // The cancel action does nothing
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { (_) in }
         
-        // add the text field to the alert
-        alertController.addTextField { (textField) in
-            textField.placeholder = ""
-        }
-        
-        //adding the action to dialogbox
         alertController.addAction(confirmAction)
         alertController.addAction(cancelAction)
         

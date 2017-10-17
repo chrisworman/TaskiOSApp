@@ -47,6 +47,11 @@ class ListsViewController: UIViewController, UITableViewDelegate, UITableViewDat
     // Show the "new list" alert in response to a button press in the UI
     @IBAction func showNewTaskListAlert(_ sender: UIBarButtonItem) {
         let alertController = UIAlertController(title: "New Task List", message: "", preferredStyle: .alert)
+        alertController.addTextField { (textField) in
+            textField.placeholder = "Enter a list name"
+        }
+        
+        // When the user confirms, get the name and create a new list via the api
         let confirmAction = UIAlertAction(title: "Create List", style: .default) { (_) in
             let newListName = alertController.textFields?[0].text
             let newList = List(id: 0, name: newListName!, date_created: "", date_modified: "")
@@ -59,15 +64,9 @@ class ListsViewController: UIViewController, UITableViewDelegate, UITableViewDat
             }
         }
         
-        // the cancel action does nothing
+        // The cancel action does nothing
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { (_) in }
-        
-        // add the text field to the alert
-        alertController.addTextField { (textField) in
-            textField.placeholder = "Enter a name for the list"
-        }
-        
-        // add the actions to the alert
+
         alertController.addAction(confirmAction)
         alertController.addAction(cancelAction)
         
