@@ -35,8 +35,15 @@ class TasksViewController: UIViewController, UITableViewDelegate, UITableViewDat
         
         // the confirm action gets the task text
         let confirmAction = UIAlertAction(title: "Add Task", style: .default) { (_) in
-            //let taskText = alertController.textFields?[0].text
-            // TODO: create a new task and save it
+            let text = alertController.textFields?[0].text
+            let newTask = Task(id: 0, list_id: self.list.id, text: text!, date_created: "", date_modified: "")
+            do {
+                try TaskApi.shared().create(newTask: newTask, completion: {(newTask: Task) in
+                    self.addTaskToUI(newTask: newTask)
+                })
+            } catch {
+                print("Error info: \(error)")
+            }
         }
         
         // the cancel action does nothing
@@ -65,6 +72,14 @@ class TasksViewController: UIViewController, UITableViewDelegate, UITableViewDat
             })
         } catch {
             print("Error info: \(error)")
+        }
+    }
+    
+    // Add the specified task model to the UI
+    private func addTaskToUI(newTask: Task) {
+        tasks.append(newTask)
+        DispatchQueue.main.async() {
+            self.tasksTableView?.reloadData()
         }
     }
     
