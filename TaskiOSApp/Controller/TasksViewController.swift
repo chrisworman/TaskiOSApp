@@ -11,18 +11,18 @@ import UIKit
 class TasksViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     @IBOutlet weak var newTaskButton: UIBarButtonItem!
+    @IBOutlet weak var tasksTableView: UITableView!
     
-    let taskListNames = ["Task 1", "Task 2"]
-    
+    var tasks: [Task] = []
     var taskListId: Int = 0
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return(taskListNames.count)
+        return(tasks.count)
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = UITableViewCell(style: UITableViewCellStyle.default, reuseIdentifier: "taskCell")
-        cell.textLabel?.text = taskListNames[indexPath.row]
+        cell.textLabel?.text = tasks[indexPath.row].text
         cell.accessoryType = UITableViewCellAccessoryType.checkmark
         return(cell)
     }
@@ -49,6 +49,21 @@ class TasksViewController: UIViewController, UITableViewDelegate, UITableViewDat
         alertController.addAction(cancelAction)
         
         self.present(alertController, animated: true, completion: nil)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        do {
+            try TaskApi.shared().get(listId: taskListId, completion: {(result: [Task]) in
+                self.tasks = result
+                DispatchQueue.main.async() {
+                    self.tasksTableView?.reloadData()
+                }
+            })
+        } catch {
+            print("Error info: \(error)")
+        }
     }
     
     override func viewDidLoad() {

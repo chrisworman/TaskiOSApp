@@ -35,8 +35,11 @@ class ListsViewController: UIViewController, UITableViewDelegate, UITableViewDat
     // This function is called before the segue
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "tasksViewControllerSegue" {
-            let taskListDetailViewController = segue.destination as! TasksViewController
-            taskListDetailViewController.taskListId = 666
+            if let indexPath = listsTableView.indexPathForSelectedRow {
+                let selectedList = lists[indexPath.row]
+                let taskListDetailViewController = segue.destination as! TasksViewController
+                taskListDetailViewController.taskListId = selectedList.id
+            }
         }
     }
     
