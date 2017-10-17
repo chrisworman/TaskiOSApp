@@ -56,6 +56,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="listsTableView" destination="hbM-C6-gBE" id="kGY-bk-7xx"/>
                         <outlet property="newTaskListButton" destination="LYn-3G-Ba2" id="zI3-Qo-MXV"/>
                     </connections>
                 </viewController>

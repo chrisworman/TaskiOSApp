@@ -11,16 +11,17 @@ import UIKit
 class ListsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     @IBOutlet weak var newTaskListButton: UIBarButtonItem!
+    @IBOutlet weak var listsTableView: UITableView!
     
-    let taskListNames = ["List 1", "List 2"]
+    var lists: [List] = []
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return(taskListNames.count)
+        return(lists.count)
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = UITableViewCell(style: UITableViewCellStyle.default, reuseIdentifier: "taskListCell")
-        cell.textLabel?.text = taskListNames[indexPath.row]
+        cell.textLabel?.text = lists[indexPath.row].name
         cell.accessoryType = UITableViewCellAccessoryType.disclosureIndicator
         return(cell)
     }
@@ -60,6 +61,23 @@ class ListsViewController: UIViewController, UITableViewDelegate, UITableViewDat
         alertController.addAction(cancelAction)
         
         self.present(alertController, animated: true, completion: nil)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+
+        do {
+            try ListApi.shared().get(completion: {(result: [List]) in
+                self.lists = result
+                DispatchQueue.main.async() {
+                    self.listsTableView?.reloadData()
+                }
+                //print("Set lists from api call")
+                //print(self.lists)
+            })
+        } catch {
+            print("Error info: \(error)")
+        }
     }
     
     override func viewDidLoad() {

@@ -14,6 +14,11 @@
 		9C02B5EF1F900EB900A7EDA7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9C02B5ED1F900EB900A7EDA7 /* LaunchScreen.storyboard */; };
 		9C02B5FA1F900EB900A7EDA7 /* TaskiOSAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C02B5F91F900EB900A7EDA7 /* TaskiOSAppTests.swift */; };
 		9C02B6051F900EB900A7EDA7 /* TaskiOSAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C02B6041F900EB900A7EDA7 /* TaskiOSAppUITests.swift */; };
+		9C321E7D1F953FB100BC5D13 /* ListApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C321E7C1F953FB100BC5D13 /* ListApi.swift */; };
+		9C321E7F1F953FBB00BC5D13 /* TaskApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C321E7E1F953FBB00BC5D13 /* TaskApi.swift */; };
+		9C321E821F953FEC00BC5D13 /* List.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C321E811F953FEC00BC5D13 /* List.swift */; };
+		9C321E841F953FF400BC5D13 /* Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C321E831F953FF400BC5D13 /* Task.swift */; };
+		9C321E861F9541A100BC5D13 /* RestApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C321E851F9541A000BC5D13 /* RestApi.swift */; };
 		9C94C9811F91C33900E16166 /* TasksViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C94C9801F91C33900E16166 /* TasksViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -48,6 +53,11 @@
 		9C02B6001F900EB900A7EDA7 /* TaskiOSAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TaskiOSAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		9C02B6041F900EB900A7EDA7 /* TaskiOSAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskiOSAppUITests.swift; sourceTree = "<group>"; };
 		9C02B6061F900EB900A7EDA7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		9C321E7C1F953FB100BC5D13 /* ListApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListApi.swift; sourceTree = "<group>"; };
+		9C321E7E1F953FBB00BC5D13 /* TaskApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskApi.swift; sourceTree = "<group>"; };
+		9C321E811F953FEC00BC5D13 /* List.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = List.swift; sourceTree = "<group>"; };
+		9C321E831F953FF400BC5D13 /* Task.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Task.swift; sourceTree = "<group>"; };
+		9C321E851F9541A000BC5D13 /* RestApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestApi.swift; sourceTree = "<group>"; };
 		9C94C9801F91C33900E16166 /* TasksViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasksViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -99,6 +109,8 @@
 		9C02B5E31F900EB900A7EDA7 /* TaskiOSApp */ = {
 			isa = PBXGroup;
 			children = (
+				9C321E801F953FDD00BC5D13 /* Model */,
+				9C321E7B1F953F8600BC5D13 /* Api */,
 				9C321E7A1F95265600BC5D13 /* Controller */,
 				9C02B5E41F900EB900A7EDA7 /* AppDelegate.swift */,
 				9C02B5E81F900EB900A7EDA7 /* Main.storyboard */,
@@ -134,6 +146,25 @@
 				9C02B5E61F900EB900A7EDA7 /* ListsViewController.swift */,
 			);
 			path = Controller;
+			sourceTree = "<group>";
+		};
+		9C321E7B1F953F8600BC5D13 /* Api */ = {
+			isa = PBXGroup;
+			children = (
+				9C321E7C1F953FB100BC5D13 /* ListApi.swift */,
+				9C321E7E1F953FBB00BC5D13 /* TaskApi.swift */,
+				9C321E851F9541A000BC5D13 /* RestApi.swift */,
+			);
+			path = Api;
+			sourceTree = "<group>";
+		};
+		9C321E801F953FDD00BC5D13 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				9C321E811F953FEC00BC5D13 /* List.swift */,
+				9C321E831F953FF400BC5D13 /* Task.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -270,9 +301,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9C321E861F9541A100BC5D13 /* RestApi.swift in Sources */,
 				9C94C9811F91C33900E16166 /* TasksViewController.swift in Sources */,
 				9C02B5E71F900EB900A7EDA7 /* ListsViewController.swift in Sources */,
+				9C321E7D1F953FB100BC5D13 /* ListApi.swift in Sources */,
+				9C321E7F1F953FBB00BC5D13 /* TaskApi.swift in Sources */,
 				9C02B5E51F900EB900A7EDA7 /* AppDelegate.swift in Sources */,
+				9C321E841F953FF400BC5D13 /* Task.swift in Sources */,
+				9C321E821F953FEC00BC5D13 /* List.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
