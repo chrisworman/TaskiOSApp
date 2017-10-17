@@ -30,9 +30,10 @@ class TasksViewController: UIViewController, UITableViewDelegate, UITableViewDat
     @IBAction func showNewTaskAlert(_ sender: Any) {
         let alertController = UIAlertController(title: "New Task", message: "", preferredStyle: .alert)
         
-        // the confirm action gets the name of the new list (TODO and creates the list)
+        // the confirm action gets the task text
         let confirmAction = UIAlertAction(title: "Add Task", style: .default) { (_) in
-            //let taskListName = alertController.textFields?[0].text
+            //let taskText = alertController.textFields?[0].text
+            // TODO: create a new task and save it
         }
         
         // the cancel action does nothing

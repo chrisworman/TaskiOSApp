@@ -43,9 +43,9 @@ class ListsViewController: UIViewController, UITableViewDelegate, UITableViewDat
     @IBAction func showNewTaskListAlert(_ sender: UIBarButtonItem) {
         let alertController = UIAlertController(title: "New Task List", message: "", preferredStyle: .alert)
         
-        // the confirm action gets the name of the new list (TODO and creates the list)
         let confirmAction = UIAlertAction(title: "Create List", style: .default) { (_) in
             //let taskListName = alertController.textFields?[0].text
+            // TODO: create and save a new list
         }
         
         // the cancel action does nothing
@@ -56,7 +56,7 @@ class ListsViewController: UIViewController, UITableViewDelegate, UITableViewDat
             textField.placeholder = "Enter a name for the list"
         }
         
-        //adding the action to dialogbox
+        // add the actions to the alert
         alertController.addAction(confirmAction)
         alertController.addAction(cancelAction)
         
@@ -72,8 +72,6 @@ class ListsViewController: UIViewController, UITableViewDelegate, UITableViewDat
                 DispatchQueue.main.async() {
                     self.listsTableView?.reloadData()
                 }
-                //print("Set lists from api call")
-                //print(self.lists)
             })
         } catch {
             print("Error info: \(error)")
@@ -82,12 +80,10 @@ class ListsViewController: UIViewController, UITableViewDelegate, UITableViewDat
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
 
 
