@@ -29,7 +29,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <segue destination="Lw1-tZ-WSh" kind="show" identifier="taskListDetailSegue" id="LX8-x6-eHI"/>
+                                            <segue destination="Lw1-tZ-WSh" kind="show" identifier="tasksViewControllerSegue" id="LX8-x6-eHI"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>

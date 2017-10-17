@@ -29,12 +29,12 @@ class ListsViewController: UIViewController, UITableViewDelegate, UITableViewDat
     // method to run when table view cell is tapped
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         // Segue to the second view controller
-        self.performSegue(withIdentifier: "taskListDetailSegue", sender: self)
+        self.performSegue(withIdentifier: "tasksViewControllerSegue", sender: self)
     }
     
     // This function is called before the segue
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "taskListDetailSegue" {
+        if segue.identifier == "tasksViewControllerSegue" {
             let taskListDetailViewController = segue.destination as! TasksViewController
             taskListDetailViewController.taskListId = 666
         }
