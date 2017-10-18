@@ -32,4 +32,9 @@ class TaskApi {
     public func create(newTask: Task, completion: @escaping(_ result: Task) -> Void) throws {
         try restApi.post(pathAndQuery: "/tasks", body: newTask, completion: completion)
     }
+    
+    // Delete a task
+    public func delete(taskId: Int, completion: @escaping() -> Void) throws {
+        try restApi.delete(pathAndQuery: String(format: "/tasks/%d", taskId), completion: completion)
+    }
 }

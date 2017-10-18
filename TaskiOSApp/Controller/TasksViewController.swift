@@ -10,8 +10,11 @@ import UIKit
 
 class TasksViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
+    @IBOutlet weak var deleteTaskButton: UIButton!
     @IBOutlet weak var newTaskButton: UIBarButtonItem!
     @IBOutlet weak var tasksTableView: UITableView!
+    
+    private let taskCellDoneButtonTag: Int = 10
     
     var tasks: [Task] = []
     var list: List = List(id: 0, name: "", date_created: "", date_modified: "")
@@ -23,10 +26,28 @@ class TasksViewController: UIViewController, UITableViewDelegate, UITableViewDat
     
     // Returns the table view cell for the "Task" at the specified index path
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = UITableViewCell(style: UITableViewCellStyle.default, reuseIdentifier: "taskCell")
-        cell.textLabel?.text = tasks[indexPath.row].text
-        cell.accessoryType = UITableViewCellAccessoryType.checkmark
+        let task = tasks[indexPath.row]
+        let cell = tasksTableView.dequeueReusableCell(withIdentifier: "taskCell")!
+        cell.textLabel?.text = task.text
+        
+        // Set the tag of the done button to be the id of the task
+        if let doneButton = cell.viewWithTag(taskCellDoneButtonTag) as? UIButton {
+            doneButton.tag = task.id
+        }
+        
         return(cell)
+    }
+    
+    // Respond to a task cell checkmark button press: delete the task
+    @IBAction func deleteTask(_ sender: UIButton) {
+        let taskId = sender.tag
+        do {
+            try TaskApi.shared().delete(taskId: taskId, completion: {() in
+                self.deleteTaskFromUI(taskId: taskId)
+            })
+        } catch {
+            print("Error info: \(error)")
+        }
     }
     
     // Show the "new task" alert in response to a button press in the UI
@@ -72,11 +93,20 @@ class TasksViewController: UIViewController, UITableViewDelegate, UITableViewDat
         }
     }
     
-    // Add the specified task model to the UI
+    // Add the specified task to the UI
     private func addTaskToUI(newTask: Task) {
         tasks.append(newTask)
         DispatchQueue.main.async() {
             self.tasksTableView?.reloadData()
+        }
+    }
+    
+    // Delete the specified task from the UI
+    private func deleteTaskFromUI(taskId : Int) {
+        let taskIndex = tasks.index{ $0.id == taskId }
+        if taskIndex != nil {
+            tasks.remove(at: taskIndex!)
+            reloadTasks()
         }
     }
     

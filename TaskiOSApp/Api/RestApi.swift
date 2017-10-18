@@ -8,7 +8,7 @@
 
 import Foundation
 
-// A wrapper for a rest api that handles serialization and provides standard operations such as HTTP GET, POST, etc.
+// A wrapper for a rest api that handles serialization and provides standard operations includign GET, POST, DELETE.
 class RestApi {
     
     // The base URL of the api (e.g. https://myapi.net)
@@ -19,7 +19,7 @@ class RestApi {
         self.baseURL = baseURL
     }
     
-    // Perform an HTTP GET using the specified path and query string.  Upon completion, call the specified function with the resulting deserialized object.
+    // HTTP GET using the specified path and query string.  Upon completion, call the specified function with the resulting deserialized object.
     public func get<ResultType:Codable>(pathAndQuery: String, completion: @escaping(_ result: ResultType) -> Void) throws {
         let requestURL = URL(string: baseURL + pathAndQuery)!
 
@@ -38,7 +38,7 @@ class RestApi {
             }.resume()
     }
     
-    // Perform an HTTP POST using the specified path, query string, and body.  Upon completion, call the specified function with the resulting deserialized object.
+    // HTTP POST using the specified path, query string, and body.  Upon completion, call the specified function with the resulting deserialized object.
     public func post<ResultType:Codable, BodyType:Codable>(pathAndQuery: String, body: BodyType, completion: @escaping(_ result: ResultType) -> Void) throws {
         let requestURL = URL(string: baseURL + pathAndQuery)!
         var request = URLRequest(url: requestURL)
@@ -62,4 +62,17 @@ class RestApi {
             }.resume()
     }
     
+    // HTTP DELETE using the specified path and query string.  Upon completion, call the specified function.
+    public func delete(pathAndQuery: String, completion: @escaping() -> Void) throws {
+        let requestURL = URL(string: baseURL + pathAndQuery)!
+        var request = URLRequest(url: requestURL)
+        request.httpMethod = "DELETE"
+        
+        URLSession.shared.dataTask(with: request) { (data, response, error) in
+            if error != nil {
+                print(error!.localizedDescription)
+            }
+            completion()
+            }.resume()
+    }
 }

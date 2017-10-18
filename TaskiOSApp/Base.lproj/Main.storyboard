@@ -9,7 +9,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Task Lists-->
+        <!--Lists-->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="ListsViewController" customModule="TaskiOSApp" customModuleProvider="target" sceneMemberID="viewController">
@@ -25,7 +25,7 @@
                                         <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Oem-qU-jxE" id="uKv-iM-rnl">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                         <connections>
@@ -48,7 +48,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Task Lists" id="l9G-KH-hBe">
+                    <navigationItem key="navigationItem" title="Lists" id="l9G-KH-hBe">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="LYn-3G-Ba2">
                             <connections>
                                 <action selector="showNewTaskListAlert:" destination="BYZ-38-t0r" id="U5t-6s-bnz"/>
@@ -76,12 +76,28 @@
                                 <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="checkmark" indentationWidth="10" reuseIdentifier="taskCell" id="C2n-9B-CgH">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="taskCell" id="C2n-9B-CgH">
                                         <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="C2n-9B-CgH" id="O8u-uA-M3d">
-                                            <rect key="frame" x="0.0" y="0.0" width="336" height="44"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <button opaque="NO" tag="10" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="u9P-1c-ham">
+                                                    <rect key="frame" x="323" y="6" width="44" height="30"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                                    <state key="normal" title="✓"/>
+                                                    <connections>
+                                                        <action selector="deleteTask:" destination="Lw1-tZ-WSh" eventType="touchUpInside" id="NXJ-Te-zjz"/>
+                                                    </connections>
+                                                </button>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="u9P-1c-ham" firstAttribute="leading" secondItem="O8u-uA-M3d" secondAttribute="leading" constant="323" id="26b-9g-ocW"/>
+                                                <constraint firstAttribute="bottom" secondItem="u9P-1c-ham" secondAttribute="bottom" constant="7.5" id="ewv-Ww-eZZ"/>
+                                                <constraint firstAttribute="trailing" secondItem="u9P-1c-ham" secondAttribute="trailing" constant="8" id="lQ2-TH-Xny"/>
+                                                <constraint firstItem="u9P-1c-ham" firstAttribute="top" secondItem="O8u-uA-M3d" secondAttribute="top" constant="6" id="uus-Jy-a5I"/>
+                                            </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                 </prototypes>
@@ -114,7 +130,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ggJ-go-FyY" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1158" y="134"/>
+            <point key="canvasLocation" x="1157.5999999999999" y="133.5832083958021"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="LWp-mq-fRk">
