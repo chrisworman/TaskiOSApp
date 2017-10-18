@@ -9,8 +9,8 @@
 import Foundation
 
 public struct List: Codable {
-    public let id: Int
-    public let name:String
-    public let date_created: String
-    public let date_modified: String
+    public var id: Int
+    public var name:String
+    public var date_created: String
+    public var date_modified: String
 }

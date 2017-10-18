@@ -38,15 +38,18 @@ class TasksViewController: UIViewController, UITableViewDelegate, UITableViewDat
         return(cell)
     }
     
-    // Respond to a task cell checkmark button press: delete the task
-    @IBAction func deleteTask(_ sender: UIButton) {
+    // Respond to a task cell checkmark button press: mark the task
+    @IBAction func markTask(_ sender: UIButton) {
         let taskId = sender.tag
-        do {
-            try TaskApi.shared().delete(taskId: taskId, completion: {() in
-                self.deleteTaskFromUI(taskId: taskId)
-            })
-        } catch {
-            print("Error info: \(error)")
+        if var task = tasks.first(where: { $0.id == taskId }) {
+            task.marked = true
+            do {
+                try TaskApi.shared().update(task: task, completion: {() in
+                    self.remoteTaskFromUI(taskId: taskId)
+                })
+            } catch {
+                print("Error info: \(error)")
+            }
         }
     }
     
@@ -60,7 +63,7 @@ class TasksViewController: UIViewController, UITableViewDelegate, UITableViewDat
         // When the user confirms, get the text and create a new task via the api
         let confirmAction = UIAlertAction(title: "Add Task", style: .default) { (_) in
             let text = alertController.textFields?[0].text
-            let newTask = Task(id: 0, list_id: self.list.id, text: text!, date_created: "", date_modified: "")
+            let newTask = Task(id: 0, list_id: self.list.id, text: text!, marked: false, date_created: "", date_modified: "")
             do {
                 try TaskApi.shared().create(newTask: newTask, completion: {(newTask: Task) in
                     self.addTaskToUI(newTask: newTask)
@@ -102,7 +105,7 @@ class TasksViewController: UIViewController, UITableViewDelegate, UITableViewDat
     }
     
     // Delete the specified task from the UI
-    private func deleteTaskFromUI(taskId : Int) {
+    private func remoteTaskFromUI(taskId : Int) {
         let taskIndex = tasks.index{ $0.id == taskId }
         if taskIndex != nil {
             tasks.remove(at: taskIndex!)

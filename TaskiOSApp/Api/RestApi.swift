@@ -62,6 +62,23 @@ class RestApi {
             }.resume()
     }
     
+    // HTTP PUT using the specified path, query string, and body.  Upon completion, call the specified function.
+    public func put<BodyType:Codable>(pathAndQuery: String, body: BodyType, completion: @escaping() -> Void) throws {
+        let requestURL = URL(string: baseURL + pathAndQuery)!
+        var request = URLRequest(url: requestURL)
+        request.httpMethod = "PUT"
+        request.httpBody = try JSONEncoder().encode(body)
+        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.addValue("application/json", forHTTPHeaderField: "Accept")
+        
+        URLSession.shared.dataTask(with: request) { (data, response, error) in
+            if error != nil {
+                print(error!.localizedDescription)
+            }
+            completion()
+            }.resume()
+    }
+    
     // HTTP DELETE using the specified path and query string.  Upon completion, call the specified function.
     public func delete(pathAndQuery: String, completion: @escaping() -> Void) throws {
         let requestURL = URL(string: baseURL + pathAndQuery)!

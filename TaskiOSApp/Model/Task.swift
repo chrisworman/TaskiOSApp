@@ -9,9 +9,10 @@
 import Foundation
 
 public struct Task: Codable {
-    public let id: Int
-    public let list_id: Int
-    public let text:String
-    public let date_created: String
-    public let date_modified: String
+    public var id: Int
+    public var list_id: Int
+    public var text: String
+    public var marked: Bool
+    public var date_created: String
+    public var date_modified: String
 }

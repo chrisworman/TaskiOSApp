@@ -88,7 +88,7 @@
                                                     <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                                     <state key="normal" title="✓"/>
                                                     <connections>
-                                                        <action selector="deleteTask:" destination="Lw1-tZ-WSh" eventType="touchUpInside" id="NXJ-Te-zjz"/>
+                                                        <action selector="markTask:" destination="Lw1-tZ-WSh" eventType="touchUpInside" id="NXJ-Te-zjz"/>
                                                     </connections>
                                                 </button>
                                             </subviews>
