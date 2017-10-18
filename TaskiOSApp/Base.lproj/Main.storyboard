@@ -49,6 +49,11 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <navigationItem key="navigationItem" title="Lists" id="l9G-KH-hBe">
+                        <barButtonItem key="leftBarButtonItem" title="Edit" id="IHZ-9t-AUb">
+                            <connections>
+                                <action selector="handleEditButtonPress:" destination="BYZ-38-t0r" id="YI1-OV-5ro"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="LYn-3G-Ba2">
                             <connections>
                                 <action selector="showNewTaskListAlert:" destination="BYZ-38-t0r" id="U5t-6s-bnz"/>
@@ -56,6 +61,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="editListsButton" destination="IHZ-9t-AUb" id="buU-Z5-d6T"/>
                         <outlet property="listsTableView" destination="hbM-C6-gBE" id="kGY-bk-7xx"/>
                         <outlet property="newTaskListButton" destination="LYn-3G-Ba2" id="zI3-Qo-MXV"/>
                     </connections>

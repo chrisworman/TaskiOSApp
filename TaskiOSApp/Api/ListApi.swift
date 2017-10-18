@@ -32,4 +32,9 @@ class ListApi {
     public func create(newList: List, completion: @escaping(_ result: List) -> Void) throws {
         try restApi.post(pathAndQuery: "/lists", body: newList, completion: completion)
     }
+    
+    // Delete a list
+    public func delete(listId: Int, completion: @escaping() -> Void) throws {
+        try restApi.delete(pathAndQuery: String(format: "/lists/%d", listId), completion: completion)
+    }
 }

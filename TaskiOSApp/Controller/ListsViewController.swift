@@ -12,6 +12,7 @@ class ListsViewController: UIViewController, UITableViewDelegate, UITableViewDat
     
     @IBOutlet weak var newTaskListButton: UIBarButtonItem!
     @IBOutlet weak var listsTableView: UITableView!
+    @IBOutlet weak var editListsButton: UIBarButtonItem!
     
     var lists: [List] = []
     
@@ -28,6 +29,23 @@ class ListsViewController: UIViewController, UITableViewDelegate, UITableViewDat
         return(cell)
     }
     
+    // Handle table view editing, esp. delete.
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        if (editingStyle == UITableViewCellEditingStyle.delete) {
+            do {
+                let list = lists[indexPath.row]
+                try ListApi.shared().delete(listId: list.id,completion: {() in
+                    self.lists.remove(at: indexPath.row)
+                    DispatchQueue.main.async() {
+                        self.listsTableView.deleteRows(at: [indexPath], with: UITableViewRowAnimation.automatic)
+                    }
+                })
+            } catch {
+                print("Error info: \(error)")
+            }
+        }
+    }
+    
     // Table view cell tapped
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         // Segue to the second view controller
@@ -41,6 +59,17 @@ class ListsViewController: UIViewController, UITableViewDelegate, UITableViewDat
                 let taskListDetailViewController = segue.destination as! TasksViewController
                 taskListDetailViewController.list = lists[indexPath.row]
             }
+        }
+    }
+    
+    // Handle the press event on the "Edit" button in the navbar
+    @IBAction func handleEditButtonPress(_ sender: UIBarButtonItem) {
+        if (listsTableView.isEditing) {
+            editListsButton.title = "Edit"
+            listsTableView.setEditing(false, animated: true)
+        } else {
+            editListsButton.title = "Done"
+            listsTableView.setEditing(true, animated: true)
         }
     }
     
